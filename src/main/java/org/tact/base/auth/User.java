@@ -41,6 +41,10 @@ public class User {
 		this.lastName = lastName;
 		this.city = city;
 	}
+	
+	public User(String firstName){
+		this.firstName = firstName;
+	}
 
 	@Override
 	public String toString() {

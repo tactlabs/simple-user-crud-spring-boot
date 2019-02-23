@@ -1,7 +1,9 @@
 package org.tact.base.auth;
 
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
@@ -52,7 +54,7 @@ public class CacheService {
 
     public void addCache(final String key, User user) {
     	
-    	_log.info(" key ["+key+"] added ");
+    	//_log.info(" key ["+key+"] added ");
     	
         List<User> list = null; 
         try {
@@ -64,5 +66,54 @@ public class CacheService {
         list.add(user);
         
         baseCache.put(key, list);
-    }    
+    }
+    
+    public void updateCache(final String key, User newUser) {
+    	
+    	//_log.info(" key ["+key+"] added ");
+    	
+        List<User> list = null; 
+        try {
+        	list = (List<User>) baseCache.get(key);
+        } catch (final ExecutionException e) {
+        	_log.error("error on getting cache");
+        	e.printStackTrace();
+        }        
+        
+        for (User user : list) {
+			if(user.getFirstName().equalsIgnoreCase(newUser.getFirstName())){				
+				user.setFirstName(newUser.getFirstName());
+				user.setLastName(newUser.getLastName());
+				user.setCity(newUser.getCity());
+			}			
+		}        
+        
+        baseCache.put(key, list);
+    }
+    
+    public void deleteCache(final String key, User newUser) {
+    	
+    	//_log.info(" key ["+key+"] added ");
+    	
+        List<User> list = null; 
+        try {
+        	list = (List<User>) baseCache.get(key);
+        } catch (final ExecutionException e) {
+        	_log.error("error on getting cache");
+        	e.printStackTrace();
+        }        
+        
+        int index = 0;        
+        for (User user : list) {
+			if(user.getFirstName().equalsIgnoreCase(newUser.getFirstName())){
+				break;
+			}			
+			
+			index++;
+		}        
+        
+        list.remove(index);
+        
+        baseCache.put(key, list);
+    }
 }
