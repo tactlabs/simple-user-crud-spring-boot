@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "e1daa935-7e95-4669-8900-9c052edb97b8",
+		"name": "Simple User API Heroku",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://user-api-simple.herokuapp.com/user",
+					"protocol": "https",
+					"host": [
+						"user-api-simple",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add User - Jenny",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://user-api-simple.herokuapp.com/user?first_name=Jenny&last_name=Craig&city=Qubec",
+					"protocol": "https",
+					"host": [
+						"user-api-simple",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "first_name",
+							"value": "Jenny"
+						},
+						{
+							"key": "last_name",
+							"value": "Craig"
+						},
+						{
+							"key": "city",
+							"value": "Qubec"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://user-api-simple.herokuapp.com/user/jenny?last_name=Kanon&city=Mumbai",
+					"protocol": "https",
+					"host": [
+						"user-api-simple",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user",
+						"jenny"
+					],
+					"query": [
+						{
+							"key": "last_name",
+							"value": "Kanon"
+						},
+						{
+							"key": "city",
+							"value": "Mumbai"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://user-api-simple.herokuapp.com/user/jenny",
+					"protocol": "https",
+					"host": [
+						"user-api-simple",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user",
+						"jenny"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
